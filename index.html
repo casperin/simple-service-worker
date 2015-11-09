@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>sw</title>
+    </head>
+    <body>
+        <div id='container'>
+            Hello world, how are you?
+        </div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.addEventListener('message', (event) => {
+                    console.log(event.data);
+                    if (event.data.updated) {
+                        alert('new stuff! You should refresh the page.');
+                    }
+                });
+
+                navigator.serviceWorker.register('sw.js');
+            }
+        </script>
+    </body>
+</html>
